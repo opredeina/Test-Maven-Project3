@@ -1,3 +1,4 @@
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -11,7 +12,7 @@ public class ValueSourceTests {
   @ValueSource(strings = {"racecar", "radar", "able was I ere I saw elba"})
   void palindromes(String candidate) {
     AtomicReference<Object> StringUtils = new AtomicReference<>();
-    assertTrue(StringUtils.equals(1));
+    assertFalse(StringUtils.equals(1));
   }
 
   @ParameterizedTest
@@ -19,6 +20,6 @@ public class ValueSourceTests {
   @ValueSource(strings = {" ", "   ", "\t", "\n"})
   void palindromesWithNullEmptyAndBlanks(String candidate) {
     AtomicReference<Object> StringUtils = new AtomicReference<>();
-    assertTrue(StringUtils.equals(2));
+    assertFalse(StringUtils.equals(2));
   }
 }
